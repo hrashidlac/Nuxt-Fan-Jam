@@ -1,3 +1,41 @@
 body{
-  background:red;
+  background:white;
+  text-align:center;
+}
+
+.form-widget{
+  border: 1px solid #CCC;
+  border-radius:5px;
+  width:350px;
+  margin:0 auto;
+  box-shadow: 3px 3px 3px #EEE;
+  padding:50px;
+}
+
+.filters__filter-items__type{
+  margin-bottom:20px;
+  display: block;
+}
+
+.filters__filter-items__type:hover{
+  cursor:pointer;
+}
+
+.button{
+  margin-top:15px;
+  background:#c8102e;
+  padding:10px 20px;
+  font-size:20px;
+  text-transform:uppercase;
+  color:white;
+  font-weight:600;
+  border-radius:3px;
+  border:0 none;
+}
+.button:hover{
+  cursor:pointer;
+  background:#1d428a;
+}
+h3{
+  color:#CCC;
 }

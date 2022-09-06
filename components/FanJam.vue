@@ -1,24 +1,21 @@
 <template>
+  <img src="https://cdn.nba.com/teams/uploads/sites/1610612746/2022/04/LAClippers_Primary_Icon_pms.svg" alt="" style="width:100px; margin: 0 auto">
+  <h1>Clippers Fan Jam</h1>
   <form class="form-widget" @submit.prevent="updateVotes">
-    <h3>Vote</h3>
     <div
       v-for="value in values"
       :key="value.id"
       class="filters__filter-items__type"
     >
       <input type="radio" :value="value.id" :id="value.id" name="vote" v-model="vote">
-      <label for="vote">{{value.name}} | {{value.artist}}</label>
+      <label :for="value.id">{{value.name}} | {{value.artist}}</label>
     </div>
-   Vote: {{vote}}
-    <!--<div>
-      <label for="username">Name</label>
-      <input id="username" type="text" v-model="username" />
-    </div> -->
+   
     <div>
       <input
         type="submit"
         class="button primary block"
-        :value="loading ? 'Loading ...' : 'Update'"
+        :value="loading ? 'Voting ...' : 'Vote Now!'"
         :disabled="loading"
       />
     </div>
@@ -40,18 +37,18 @@
   const values = [ 
     {
       id: 1,
-      name: "song 1",
-      artist: "Artist 1"
+      name: "We Will Rock You",
+      artist: "Queen"
     }, 
     {
       id: 2,
-      name: "song 2",
-      artist: "Artist 2"
+      name: "Hey Ho Let's Go",
+      artist: "The Ramones"
     },
     {
       id: 3,
-      name: "song 3",
-      artist: "Artist 3"
+      name: "California Love",
+      artist: "2Pac and Doctor Dre"
     },
   ]
   const supabase = useSupabaseClient()
@@ -73,23 +70,23 @@
 
   async function updateVotes() {
       try {
-          console.log(vote.value)
+          //console.log(vote.value)
           loading.value = true
           // const updates = {
           //     song_1: username.value,
           // }
           if (vote.value === 1){
-            console.log("one")
+            //console.log("one")
             let { error } = await supabase.rpc('increment', { row_id: 1 })
             if (error) throw error
           }
           else if (vote.value === 2){
-            console.log("two")
+            //console.log("two")
             let { error } = await supabase.rpc('increment_song_2', { row_id: 1 })
             if (error) throw error
           }
           else{
-            console.log("three")
+            //console.log("three")
             let { error } = await supabase.rpc('increment_song_3', { row_id: 1 })
             if (error) throw error
           }
@@ -102,6 +99,8 @@
           alert(error.message)
       } finally {
           loading.value = false
+          console.log("voted")
+          navigateTo('https://lively-axolotl-1fad84.netlify.app/thankyou',{ external: true })
       }
   }
 
