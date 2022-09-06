@@ -1,2 +1,2 @@
 # Nuxt-Fan-Jam
-Clippers Fan Jam
+Clippers Fan Jam.
