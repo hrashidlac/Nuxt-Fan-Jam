@@ -4,4 +4,10 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
   css: ['@/assets/main.css'],
+  ssr: false,
+  nitro: {
+    prerender: {
+      routes: ['/vote', '/thankyou']
+    }
+  }
 })
